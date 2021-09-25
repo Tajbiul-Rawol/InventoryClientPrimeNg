@@ -16,11 +16,13 @@ import { FormsModule } from "@angular/forms";
 import {InputTextareaModule} from 'primeng/inputtextarea';
 import {MessagesModule} from 'primeng/messages';
 import {MessageModule} from 'primeng/message';
+import {AddProductComponent} from './inventory/product/add-product/add-product.component';
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    SidebarComponent
+    SidebarComponent,
+    AddProductComponent
   ],
   imports: [
     BrowserModule,
