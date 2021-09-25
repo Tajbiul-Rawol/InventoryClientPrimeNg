@@ -17,6 +17,7 @@ import {InputTextareaModule} from 'primeng/inputtextarea';
 import {MessagesModule} from 'primeng/messages';
 import {MessageModule} from 'primeng/message';
 import {AddProductComponent} from './inventory/product/add-product/add-product.component';
+import {TableModule} from 'primeng/table';
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,7 +39,8 @@ import {AddProductComponent} from './inventory/product/add-product/add-product.c
     FormsModule,
     InputTextareaModule,
     MessagesModule,
-    MessageModule
+    MessageModule,
+    TableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

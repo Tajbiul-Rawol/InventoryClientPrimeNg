@@ -39,3 +39,30 @@
         </div>
     </div>
   </div>
+
+  <p-button type="button"  (click)="loadProductData()" label="Click" ></p-button>
+
+  <div class="card">
+    <h5>Single</h5>
+    <p>In single mode, a row is selected on click event of a row. If the row is already selected then the row gets unselected.</p>
+    <p-table [value]="products" selectionMode="single" [(selection)]="selectedProduct" dataKey="code" responsiveLayout="scroll">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>ID</th>
+                <th>Product Name</th>
+                <th>Product Detail</th>
+                <th>Product Type</th>
+                <th>Price</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-product>
+            <tr [pSelectableRow]="product">
+                <td>{{product.ID}}</td>
+                <td>{{product.ProductName}}</td>
+                <td>{{product.ProductDetail}}</td>
+                <td>{{product.ProductType}}</td>
+                <td>{{product.Price}}</td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>

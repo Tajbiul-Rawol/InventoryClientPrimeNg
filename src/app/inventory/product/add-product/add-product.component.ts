@@ -13,6 +13,7 @@ export class AddProductComponent implements OnInit {
 
   flag = false;
   products : Product[];
+  selectedProduct: Product;
   product = new Product();
   click = false;
 
@@ -40,6 +41,7 @@ export class AddProductComponent implements OnInit {
          this.showViaService(response,type);
          this.flag = true;
          this.clearField();
+         this.loadProductData();
        }
      },
      error => {
@@ -63,5 +65,13 @@ export class AddProductComponent implements OnInit {
   this.product.ProductName = "";
   this.product.ProductType = "";
 }
+
+loadProductData(){
+  this.ApiService.getProductData().subscribe(data=>{
+      this.products = Object.values(data);
+  });
+}
+
+
 
 }
