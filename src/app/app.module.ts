@@ -11,7 +11,11 @@ import {MenubarModule} from 'primeng/menubar';
 import {InputTextModule} from 'primeng/inputtext';
 import { NavbarComponent } from './layout/navbar/navbar.component';
 import { SidebarComponent } from './layout/sidebar/sidebar.component';
-
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from "@angular/forms";
+import {InputTextareaModule} from 'primeng/inputtextarea';
+import {MessagesModule} from 'primeng/messages';
+import {MessageModule} from 'primeng/message';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +31,12 @@ import { SidebarComponent } from './layout/sidebar/sidebar.component';
     SidebarModule,
     PanelMenuModule,
     MenubarModule,
-    InputTextModule
+    InputTextModule,
+    HttpClientModule,
+    FormsModule,
+    InputTextareaModule,
+    MessagesModule,
+    MessageModule
   ],
   providers: [],
   bootstrap: [AppComponent]
