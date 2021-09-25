@@ -1,0 +1,11 @@
+<p-tabMenu [model]="items"></p-tabMenu>
+
+<div >
+    <p-sidebar [style]="{'width':'auto'}" [(visible)]="visibleSidebar1" [baseZIndex]="10000">
+        <h1 style="font-weight:normal">&nbsp;</h1>
+        <p-panelMenu [model]="items" [style]="{'width':'105%'}"></p-panelMenu>
+    </p-sidebar>
+</div>
+
+
+<p-button type="text" (click)="visibleSidebar1 = true" icon="pi pi-plus" label="Show"></p-button>
