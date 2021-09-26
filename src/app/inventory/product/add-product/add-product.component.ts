@@ -20,6 +20,17 @@ export class AddProductComponent implements OnInit {
   constructor(private messageService: MessageService, public ApiService: ResourceService, public primengConfig: PrimeNGConfig) { }
   
   ngOnInit(): void {
+    this.loadProductData();
+  }
+
+  onRowSelect(event){
+    this.selectedProduct = event.data;
+    this.product.ID = event.data.ID;
+    this.product.ProductName = event.data.ProductName;
+    this.product.ProductType = event.data.ProductType;
+    this.product.ProductDetail = event.data.ProductDetail;
+    this.product.Price = event.data.Price;
+    
   }
 
 
@@ -64,6 +75,7 @@ export class AddProductComponent implements OnInit {
   this.product.ProductDetail = "";
   this.product.ProductName = "";
   this.product.ProductType = "";
+  this.selectedProduct = null;
 }
 
 loadProductData(){
@@ -72,6 +84,13 @@ loadProductData(){
   });
 }
 
-
+onRowUnselect(event){
+  this.selectedProduct = event.data;
+  this.product.ID = event.data.ID;
+  this.product.ProductName = event.data.ProductName;
+  this.product.ProductType = event.data.ProductType;
+  this.product.ProductDetail = event.data.ProductDetail;
+  this.product.Price = event.data.Price;
+}
 
 }

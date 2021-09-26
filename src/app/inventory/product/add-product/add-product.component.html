@@ -1,68 +1,75 @@
 
-<div class="card" style="width: 40%;left: 20%;padding: 20px;" >
-    <h5>Add Product</h5>
-    <div class="ui-fluid">
-        <div class="p-field" style="margin-left:10%">
-          <p-messages></p-messages>
-          <input type="text" [ngStyle]="{'margin-right':'10px'}" pInputText  aria-describedby="username2-help" [(ngModel)]="product.ProductName" placeholder="name"/>
-          <input type="text" [ngStyle]="{'margin-right':'10px'}" pInputText  [(ngModel)]="product.ID" style="margin-right: 20px;" placeholder="ID"/>
-          <div>
-            <div *ngIf="product.ProductName === ''">
-              <small id="username2-help" class="p-invalid">product name is not available.</small>
-            </div>
-          </div>
-        </div>
-        <br>
-        <div class="p-field" style="margin-left:10%">
-          <input type="text" pInputText [(ngModel)]="product.Price" style="margin-right: 20px;" (click)="toggleClick()" placeholder="Product price"/>
-          <input type="text" pInputText [(ngModel)]="product.ProductType" placeholder="type"/>
-          <div class="row">
-            <div class="col-sm-6">
-              <div *ngIf="click && !product.Price">
-                <small class="p-invalid">product name is not available.</small>
+<div class="row" [style]="{'display':'inline-flex'}">
+     <div style="width: 40%;left: 20%;padding: 20px;">
+      <div class="card"  >
+        <h5>Add Product</h5>
+        <div class="ui-fluid">
+            <div class="p-field" style="margin-left:10%">
+              <p-messages></p-messages>
+              <input type="text" [ngStyle]="{'margin-right':'10px'}" pInputText  aria-describedby="username2-help" [(ngModel)]="product.ProductName" placeholder="name"/>
+              <input type="text" [ngStyle]="{'margin-right':'10px'}" pInputText [ngClass]="{'disabled':'selectedProduct !=null'}" [(ngModel)]="product.ID" style="margin-right: 20px;" placeholder="ID"/>
+              <div>
+                <div *ngIf="product.ProductName === ''">
+                  <small id="username2-help" class="p-invalid">product name is not available.</small>
+                </div>
               </div>
             </div>
-            <div class="col-sm-6" [ngStyle]="{'padding':'0px'}">
-              <div *ngIf="product.ProductType === ''">
-                <small class="p-invalid">product Type is not available.</small>
+            <br>
+            <div class="p-field" style="margin-left:10%">
+              <input type="text" pInputText [(ngModel)]="product.Price" style="margin-right: 20px;" (click)="toggleClick()" placeholder="Product price"/>
+              <input type="text" pInputText [(ngModel)]="product.ProductType" placeholder="type"/>
+              <div class="row">
+                <div class="col-sm-6">
+                  <div *ngIf="click && !product.Price">
+                    <small class="p-invalid">product name is not available.</small>
+                  </div>
+                </div>
+                <div class="col-sm-6" [ngStyle]="{'padding':'0px'}">
+                  <div *ngIf="product.ProductType === ''">
+                    <small class="p-invalid">product Type is not available.</small>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
+            <br>
+            <div class="p-field" style="margin-left:10%">
+              <textarea pInputTextarea [(ngModel)]="product.ProductDetail" style="width: 90%;" placeholder="details"></textarea>
+            </div>
+            <br>
+            <div class="p-field" style="margin-left:10%">
+              <p-button label="Add Product" (click)="saveProductData()"></p-button>
+            </div>
         </div>
-        <br>
-        <div class="p-field" style="margin-left:10%">
-          <textarea pInputTextarea [(ngModel)]="product.ProductDetail" style="width: 90%;" placeholder="details"></textarea>
-        </div>
-        <br>
-        <div class="p-field" style="margin-left:10%">
-          <p-button label="Add Product" (click)="saveProductData()" style="margin-left: 30%;"></p-button>
-        </div>
+      </div>
+     </div>
+     <div [style]="{'width':'50%'}">
+        
+      <p-button type="button"  (click)="loadProductData()" label="Refresh" ></p-button>
+    
+      <div class="card">
+        <h5>Events</h5>
+        <p>onRowSelect and onRowUnselect are available as selection events.</p>
+        <p-table [value]="products" selectionMode="single" [(selection)]="selectedProduct" dataKey="code" responsiveLayout="scroll"
+            (onRowSelect)="onRowSelect($event)" (onRowUnselect)="onRowUnselect($event)">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>ID</th>
+                    <th>Product Name</th>
+                    <th>Product Type</th>
+                    <th>Price</th>
+                    <th>Detail</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-product >
+                <tr [pSelectableRow]="product" >
+                    <td>{{product.ID}}</td>
+                    <td>{{product.ProductName}}</td>
+                    <td>{{product.ProductType}}</td>
+                    <td>{{product.Price}}</td>
+                    <td>{{product.ProductDetail}}</td>
+                </tr>
+            </ng-template>
+        </p-table>
     </div>
-  </div>
-
-  <p-button type="button"  (click)="loadProductData()" label="Click" ></p-button>
-
-  <div class="card">
-    <h5>Single</h5>
-    <p>In single mode, a row is selected on click event of a row. If the row is already selected then the row gets unselected.</p>
-    <p-table [value]="products" selectionMode="single" [(selection)]="selectedProduct" dataKey="code" responsiveLayout="scroll">
-        <ng-template pTemplate="header">
-            <tr>
-                <th>ID</th>
-                <th>Product Name</th>
-                <th>Product Detail</th>
-                <th>Product Type</th>
-                <th>Price</th>
-            </tr>
-        </ng-template>
-        <ng-template pTemplate="body" let-product>
-            <tr [pSelectableRow]="product">
-                <td>{{product.ID}}</td>
-                <td>{{product.ProductName}}</td>
-                <td>{{product.ProductDetail}}</td>
-                <td>{{product.ProductType}}</td>
-                <td>{{product.Price}}</td>
-            </tr>
-        </ng-template>
-    </p-table>
+     </div>
 </div>
