@@ -45,6 +45,10 @@ export class AddProductComponent implements OnInit {
         this.showViaService("fields cannot be empty", "error"); 
         return;
     }
+    if (this.selectedProduct) {
+       this.updateProduct(this.product);
+       return;
+    }
     this.ApiService.postProductData(this.product).subscribe(
      response=>{
        if (response) {
@@ -67,6 +71,24 @@ export class AddProductComponent implements OnInit {
 
  showViaService(message, type){
   this.messageService.add({severity: type, detail: message});
+}
+
+updateProduct(product: Product){
+  this.ApiService.updateProductData(product).subscribe(
+    response => {
+      let type = "success";
+      this.showViaService(response,type);
+      this.flag = true;
+      this.loadProductData();
+      return;
+    },
+    error => {
+     if (error) {
+       let type = "error";
+       this.showViaService(error,type);
+     }
+    }
+  );
 }
 
  clearField(){

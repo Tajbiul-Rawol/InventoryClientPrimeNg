@@ -33,4 +33,8 @@ export class ResourceService {
   return this.http.get(url);
 }
 
+ updateProductData(product: Product){
+    let url = this.baseUrl+"Product/update";
+    return this.http.put(url,product);
+ }
 }
