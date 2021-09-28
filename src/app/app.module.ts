@@ -17,6 +17,7 @@ import {InputTextareaModule} from 'primeng/inputtextarea';
 import {MessagesModule} from 'primeng/messages';
 import {MessageModule} from 'primeng/message';
 import {AddProductComponent} from './inventory/product/add-product/add-product.component';
+import { AddCategoryComponent } from "./inventory/category/add-category/add-category.component";
 import {TableModule} from 'primeng/table';
 import { ToastModule } from "primeng/toast";
 @NgModule({
@@ -24,7 +25,8 @@ import { ToastModule } from "primeng/toast";
     AppComponent,
     NavbarComponent,
     SidebarComponent,
-    AddProductComponent
+    AddProductComponent,
+    AddCategoryComponent
   ],
   imports: [
     BrowserModule,
