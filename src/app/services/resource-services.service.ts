@@ -28,6 +28,11 @@ export class ResourceService {
     return this.http.post(url,product);
  }
 
+ postCategoryData(category: Category){
+   let url = this.baseUrl+"Category/post";
+   return this.http.post(url,category);
+}
+
  getStoreData(){
   let url = this.baseUrl+"Store/getStore";
   return this.http.get(url);
