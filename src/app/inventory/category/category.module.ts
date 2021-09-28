@@ -1,10 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { AddCategoryComponent } from './add-category/add-category.component';
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    AddCategoryComponent
+  ],
   imports: [
     CommonModule
   ]

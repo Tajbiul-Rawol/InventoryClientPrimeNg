@@ -40,8 +40,8 @@ export class AddProductComponent implements OnInit {
 
   saveProductData(){
     if (this.product.ProductName == null ||
-       this.product.ProductType == null ||
-       this.product.Price == null) {
+        this.product.ProductType == null ||
+        this.product.Price == null) {
         this.showViaService("fields cannot be empty", "error"); 
         return;
     }
