@@ -14,7 +14,7 @@ export class ResourceService {
   baseUrl = "http://localhost:21435/api/";
   
   getCategoryData(){
-     let url = this.baseUrl+"Category";
+     let url = this.baseUrl+"Category/showCategories";
      return this.http.get(url);
   }
 

@@ -48,26 +48,26 @@ export class AddCategoryComponent implements OnInit {
            return;
       }
       if (this.saveCategoryData) {
-          //update service here
+        this.ApiService.postCategoryData(this.category).subscribe(
+          response=>{
+             if (response) {
+                let type = "success";
+                this.showViaService(response,type);
+                this.flag = true;
+                this.clearField();
+                this.loadCategoryData();
+              }
+            },
+              error => {
+                if (error) {
+                  let type = "error";
+                  this.showViaService(error,type);
+                }
+              }
+           );
            return;
       }
-      this.ApiService.postCategoryData(this.category).subscribe(
-         response=>{
-            if (response) {
-               let type = "success";
-               this.showViaService(response,type);
-               this.flag = true;
-               this.clearField();
-               this.loadCategoryData();
-             }
-           },
-             error => {
-               if (error) {
-                 let type = "error";
-                 this.showViaService(error,type);
-               }
-             }
-          );
+      
   }
 
   toggleClick(){
