@@ -16,13 +16,19 @@ export class AddCategoryComponent implements OnInit {
   category = new Category();
   click = false;
   flag = false;
+  displayModal: boolean;
   constructor(private messageService: MessageService, public ApiService: ResourceService, public primengConfig: PrimeNGConfig) { }
 
   ngOnInit(): void {
      this.loadCategoryData();
   }
-
   
+  showModalDialog(event){
+    this.displayModal = true;
+
+  }
+
+
   onRowSelect(event){
     this.selectedCategory = event.data;
     this.category.ID = event.data.ID;

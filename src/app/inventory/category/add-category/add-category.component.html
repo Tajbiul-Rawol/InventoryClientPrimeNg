@@ -1,61 +1,87 @@
 <div class="row" [style]="{'display':'inline-flex'}">
-    <div style="width: 40%;left: 20%;padding: 20px;">
-     <div class="card"  >
-       <h5>Add Category</h5>
-       <div class="ui-fluid">
-           <div class="p-field" style="margin-left:10%">
-             <p-messages></p-messages>
-             <input type="text" [ngStyle]="{'margin-right':'10px'}" pInputText  aria-describedby="username2-help" [(ngModel)]="category.Name" placeholder="Category name"/>
-             <input type="text" [ngStyle]="{'margin-right':'10px'}" pInputText [ngClass]="{'disabled':'selectedCategory !=null'}" [(ngModel)]="category.ID" style="margin-right: 20px;" placeholder="ID"/>
-             <div>
-               <div *ngIf="category.Name === ''">
-                 <small id="username2-help" class="p-invalid">Category name is not available.</small>
-               </div>
-             </div>
-           </div>
-           <br>
-           <div class="p-field" style="margin-left:10%">
-             <input type="text" pInputText [(ngModel)]="category.CategoryType" style="margin-right: 20px;" (click)="toggleClick()" placeholder="Category Type"/>
-             <div class="row">
-               <div class="col-sm-6">
-                 <div *ngIf="click && !category.CategoryType">
-                   <small class="p-invalid">Category Type is not available</small>
-                 </div>
-               </div>
-             </div>
-           </div>
-           <br>
-           <br>
-           <div class="p-field" style="margin-left:10%">
-             <p-button label="Add Category" (click)="saveCategoryData()"></p-button>
-           </div>
-       </div>
-     </div>
+  <div style="width: 40%;left: 20%;padding: 20px;">
+    <div class="card">
+      <h5>Add Category</h5>
+      <div class="ui-fluid">
+        <div class="p-field" style="margin-left:10%">
+          <p-messages></p-messages>
+          <input type="text" [ngStyle]="{'margin-right':'10px'}" pInputText aria-describedby="username2-help"
+            [(ngModel)]="category.Name" placeholder="Category name" />
+          <input type="text" [ngStyle]="{'margin-right':'10px'}" pInputText
+            [ngClass]="{'disabled':'selectedCategory !=null'}" [(ngModel)]="category.ID" style="margin-right: 20px;"
+            placeholder="ID" />
+          <div>
+            <div *ngIf="category.Name === ''">
+              <small id="username2-help" class="p-invalid">Category name is not available.</small>
+            </div>
+          </div>
+        </div>
+        <br>
+        <div class="p-field" style="margin-left:10%">
+          <input type="text" pInputText [(ngModel)]="category.CategoryType" style="margin-right: 20px;"
+            (click)="toggleClick()" placeholder="Category Type" />
+          <div class="row">
+            <div class="col-sm-6">
+              <div *ngIf="click && !category.CategoryType">
+                <small class="p-invalid">Category Type is not available</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br>
+        <br>
+        <div class="p-field" style="margin-left:10%">
+          <p-button label="Add Category" (click)="saveCategoryData()"></p-button>
+        </div>
+      </div>
     </div>
-    <div [style]="{'width':'50%'}">
-       
-     <p-button type="button"  (click)="loadCategoryData()" label="Refresh" ></p-button>
-   
-     <div class="card">
-       <h5>Events</h5>
-       <p>onRowSelect and onRowUnselect are available as selection events.</p>
-       <p-table [value]="categories" selectionMode="single" [(selection)]="selectedCategory" dataKey="code" responsiveLayout="scroll"
-           (onRowSelect)="onRowSelect($event)" (onRowUnselect)="onRowUnselect($event)">
-           <ng-template pTemplate="header">
-               <tr>
-                   <th>ID</th>
-                   <th>Category Name</th>
-                   <th>Category Type</th>
-               </tr>
-           </ng-template>
-           <ng-template pTemplate="body" let-category >
-               <tr [pSelectableRow]="category" >
-                   <td>{{category.ID}}</td>
-                   <td>{{category.Name}}</td>
-                   <td>{{category.CategoryType}}</td>
-               </tr>
-           </ng-template>
-       </p-table>
-   </div>
+  </div>
+  <div [style]="{'width':'50%'}">
+
+    <p-button type="button" (click)="loadCategoryData()" label="Refresh"></p-button>
+
+
+    <div class="card">
+      <h5>Events</h5>
+      <p>onRowSelect and onRowUnselect are available as selection events.</p>
+      <p-table [value]="categories" selectionMode="single" [(selection)]="selectedCategory" dataKey="code"
+        responsiveLayout="scroll" (onRowSelect)="onRowSelect($event)" (onRowUnselect)="onRowUnselect($event)"
+        [scrollable]="true" scrollHeight="350px">
+        <ng-template pTemplate="header">
+          <tr>
+            <th>ID</th>
+            <th>Category Name</th>
+            <th>Category Type</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-category>
+          <tr [pSelectableRow]="category" (click)="showModalDialog($event)" >
+            <td>{{category.ID}}</td>
+            <td>{{category.Name}}</td>
+            <td>{{category.CategoryType}}</td>
+          </tr>
+        </ng-template>
+      </p-table>
     </div>
+  </div>
 </div>
+
+<p-dialog header="Enter Category Details" [(visible)]="displayModal" [modal]="true" [style]="{width: '50vw'}" [baseZIndex]="10000">
+          <input type="text" [ngStyle]="{'margin-right':'10px'}" pInputText aria-describedby="username2-help"
+             placeholder="ID" [ngModel]="category.ID"  />
+          <input type="text" [ngStyle]="{'margin-right':'10px'}" pInputText
+             style="margin-right: 20px;"
+             placeholder="Category name" [ngModel]="category.Name"/>
+          <input type="text" [ngStyle]="{'margin-right':'10px'}" pInputText
+             style="margin-right: 20px;"
+             placeholder="Category Type" [ngModel]="category.CategoryType"/>
+             <br><br>
+          <input type="text" [ngStyle]="{'margin-right':'10px'}" pInputText
+             style="margin-right: 20px;"
+             placeholder="Category Type" />
+  <ng-template pTemplate="footer">
+      <p-button icon="pi pi-check" (click)="displayModal=false" label="Yes" styleClass="p-button-text"></p-button>
+      <p-button icon="pi pi-times" (click)="displayModal=false" label="No"></p-button>
+  </ng-template>
+</p-dialog>
+

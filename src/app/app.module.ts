@@ -20,6 +20,7 @@ import {AddProductComponent} from './inventory/product/add-product/add-product.c
 import { AddCategoryComponent } from "./inventory/category/add-category/add-category.component";
 import {TableModule} from 'primeng/table';
 import { ToastModule } from "primeng/toast";
+import {DialogModule} from 'primeng/dialog';
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,7 +45,8 @@ import { ToastModule } from "primeng/toast";
     MessagesModule,
     MessageModule,
     TableModule,
-    ToastModule
+    ToastModule,
+    DialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
