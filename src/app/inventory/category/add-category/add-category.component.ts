@@ -28,7 +28,6 @@ export class AddCategoryComponent implements OnInit {
 
   }
 
-
   onRowSelect(event){
     this.selectedCategory = event.data;
     this.category.ID = event.data.ID;
@@ -36,9 +35,24 @@ export class AddCategoryComponent implements OnInit {
     this.category.CategoryType = event.data.CategoryType;
   }
 
-  
+
   showViaService(message, type){
     this.messageService.add({severity: type, detail: message});
+  }
+
+  updateData(category: Category){
+    this.displayModal = false;
+  }
+
+  findIndexByID(ID: number, ObjArray: any[]){
+     let index = -1;
+    for (let i = 0; i < ObjArray.length; i++) {
+       if (ObjArray[i].ID == ID) {
+         index = i;
+         break;
+       }
+    }
+    return index;
   }
 
   clearField(){

@@ -46,7 +46,7 @@
       <p>onRowSelect and onRowUnselect are available as selection events.</p>
       <p-table [value]="categories" selectionMode="single" [(selection)]="selectedCategory" dataKey="ID"
         responsiveLayout="scroll" (onRowSelect)="onRowSelect($event)" (onRowUnselect)="onRowUnselect($event)"
-        [scrollable]="true" scrollHeight="350px">
+        [scrollable]="true" scrollHeight="300px">
         <ng-template pTemplate="header">
           <tr>
             <th>ID</th>
@@ -67,20 +67,37 @@
 </div>
 
 <p-dialog header="Enter Category Details" [(visible)]="displayModal" [modal]="true" [style]="{width: '50vw'}" [baseZIndex]="10000">
-          <input type="text" [ngStyle]="{'margin-right':'10px'}" pInputText aria-describedby="username2-help"
-             placeholder="ID" [ngModel]="category.ID"  />
-          <input type="text" [ngStyle]="{'margin-right':'10px'}" pInputText
-             style="margin-right: 20px;"
-             placeholder="Category name" [ngModel]="category.Name"/>
-          <input type="text" [ngStyle]="{'margin-right':'10px'}" pInputText
-             style="margin-right: 20px;"
-             placeholder="Category Type" [ngModel]="category.CategoryType"/>
+          <input type="text"
+           [ngStyle]="{'margin-right':'10px'}"
+            name="ID"
+            id="ID"
+            pInputText
+            aria-describedby="username2-help"
+            placeholder="ID" 
+            #ID ="ngModel"
+            [ngModel]="category.ID"  />
+
+          <input type="text"
+           [ngStyle]="{'margin-right':'10px'}"
+            pInputText
+            id="categoryName"
+            #categoryName = "ngModel"
+            style="margin-right: 20px;"
+            name="categoryName"
+            placeholder="Category name"
+            [ngModel]="category.Name"/>
+          <input type="text"
+             [ngStyle]="{'margin-right':'10px'}" 
+             pInputText
+             id="categoryType"
+             style="margin-right: 20px;" 
+             name="categoryType"
+             #categoryType = "ngModel"
+             placeholder="Category Type" 
+             [ngModel]="category.CategoryType"/>
              <br><br>
-          <input type="text" [ngStyle]="{'margin-right':'10px'}" pInputText
-             style="margin-right: 20px;"
-             placeholder="Category Type" />
   <ng-template pTemplate="footer">
-      <p-button icon="pi pi-check" (click)="displayModal=false" label="Yes" styleClass="p-button-text"></p-button>
+      <p-button icon="pi pi-check" (click)="updateData(category)" label="Yes" styleClass="p-button-text"></p-button>
       <p-button icon="pi pi-times" (click)="displayModal=false" label="No"></p-button>
   </ng-template>
 </p-dialog>
