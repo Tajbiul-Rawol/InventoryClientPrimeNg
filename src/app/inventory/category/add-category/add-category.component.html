@@ -44,7 +44,7 @@
     <div class="card">
       <h5>Events</h5>
       <p>onRowSelect and onRowUnselect are available as selection events.</p>
-      <p-table [value]="categories" selectionMode="single" [(selection)]="selectedCategory" dataKey="code"
+      <p-table [value]="categories" selectionMode="single" [(selection)]="selectedCategory" dataKey="ID"
         responsiveLayout="scroll" (onRowSelect)="onRowSelect($event)" (onRowUnselect)="onRowUnselect($event)"
         [scrollable]="true" scrollHeight="350px">
         <ng-template pTemplate="header">
