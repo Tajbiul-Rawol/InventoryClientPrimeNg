@@ -25,8 +25,9 @@ export class AddCategoryComponent implements OnInit {
   
   showModalDialog(event){
     this.displayModal = true;
-
+    
   }
+
 
   onRowSelect(event){
     this.selectedCategory = event.data;
@@ -35,11 +36,10 @@ export class AddCategoryComponent implements OnInit {
     this.category.CategoryType = event.data.CategoryType;
   }
 
-
+  
   showViaService(message, type){
     this.messageService.add({severity: type, detail: message});
   }
-
   updateData(category: Category){
     this.displayModal = false;
   }
