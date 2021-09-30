@@ -15,12 +15,18 @@ export class AddProductComponent implements OnInit {
   products : Product[];
   selectedProduct: Product;
   product = new Product();
+  displayModal: boolean = false;
   click = false;
 
   constructor(private messageService: MessageService, public ApiService: ResourceService, public primengConfig: PrimeNGConfig) { }
   
   ngOnInit(): void {
     this.loadProductData();
+  }
+
+  showModalDialog(event){
+    this.displayModal = true;
+    
   }
 
   onRowSelect(event){
@@ -33,6 +39,19 @@ export class AddProductComponent implements OnInit {
     
   }
 
+
+  updateData(){
+    this.product.ID = parseInt((<HTMLInputElement>document.getElementById('ID')).value);
+    this.product.ProductName = (<HTMLInputElement>document.getElementById('productName')).value;
+    this.product.Price = parseInt((<HTMLInputElement>document.getElementById('price')).value);
+     if (this.product.ProductName== null || this.product.Price == null) {
+        this.showViaService("Fields cannot be empty!", "error");
+     }
+     else{
+         this.updateProduct(this.product);
+     }
+    this.displayModal = false;
+  }
 
  toggleClick(){
      this.click = true;
