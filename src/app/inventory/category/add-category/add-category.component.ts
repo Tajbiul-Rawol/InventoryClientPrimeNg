@@ -3,6 +3,7 @@ import {Message,MessageService} from 'primeng/api';
 import {ResourceService} from '../../../services/resource-services.service';
 import { Category } from '../../../entities/Category'; 
 import { PrimeNGConfig } from 'primeng/api';
+
 @Component({
   selector: 'app-add-category',
   templateUrl: './add-category.component.html',
@@ -30,6 +31,7 @@ export class AddCategoryComponent implements OnInit {
 
 
   onRowSelect(event){
+    console.log(event.data);
     this.selectedCategory = event.data;
     this.category.ID = event.data.ID;
     this.category.Name = event.data.Name;
@@ -41,6 +43,9 @@ export class AddCategoryComponent implements OnInit {
     this.messageService.add({severity: type, detail: message});
   }
   updateData(category: Category){
+    this.category.ID = parseInt((<HTMLInputElement>document.getElementById('ID')).value);
+    this.category.Name = (<HTMLInputElement>document.getElementById('categoryName')).value;
+    this.category.CategoryType = (<HTMLInputElement>document.getElementById('categoryType')).value;
     this.displayModal = false;
   }
 
