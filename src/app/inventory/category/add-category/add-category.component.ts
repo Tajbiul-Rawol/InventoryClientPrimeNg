@@ -42,10 +42,16 @@ export class AddCategoryComponent implements OnInit {
   showViaService(message, type){
     this.messageService.add({severity: type, detail: message});
   }
-  updateData(category: Category){
+  updateData(){
     this.category.ID = parseInt((<HTMLInputElement>document.getElementById('ID')).value);
     this.category.Name = (<HTMLInputElement>document.getElementById('categoryName')).value;
     this.category.CategoryType = (<HTMLInputElement>document.getElementById('categoryType')).value;
+     if (this.category.Name == null || this.category.CategoryType == null) {
+        this.showViaService("Fields cannot be empty!", "error");
+     }
+     else{
+         this.updateCategoryData();
+     }
     this.displayModal = false;
   }
 
@@ -72,7 +78,7 @@ export class AddCategoryComponent implements OnInit {
            this.showViaService("fields cannot be empty", "error"); 
            return;
       }
-      if (this.saveCategoryData) {
+      else{
         this.ApiService.postCategoryData(this.category).subscribe(
           response=>{
              if (response) {
@@ -112,5 +118,27 @@ export class AddCategoryComponent implements OnInit {
     this.ApiService.getCategoryData().subscribe(data=>{
       this.categories = Object.values(data);
    });
+  }
+
+
+  updateCategoryData(){
+    this.ApiService.updateCategoryData(this.category).subscribe(
+      response=>{
+           if (response) {
+            let type = "success";
+            this.showViaService(response,type);
+            this.flag = true;
+            this.clearField();
+            this.loadCategoryData();
+           }  
+       },
+       error=>{
+        if (error) {
+          let type = "error";
+          this.showViaService(error,type);
+        }
+       }
+    );
+    return;
   }
 }

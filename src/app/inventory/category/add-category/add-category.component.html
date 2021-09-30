@@ -1,10 +1,11 @@
+<p-toast></p-toast>
 <div class="row" [style]="{'display':'inline-flex'}">
   <div style="width: 40%;left: 20%;padding: 20px;">
     <div class="card">
       <h5>Add Category</h5>
       <div class="ui-fluid">
         <div class="p-field" style="margin-left:10%">
-          <p-messages></p-messages>
+          <!-- <p-messages></p-messages> -->
           <input type="text" [ngStyle]="{'margin-right':'10px'}" pInputText aria-describedby="username2-help"
             [(ngModel)]="category.Name" placeholder="Category name" />
           <input type="text" [ngStyle]="{'margin-right':'10px'}" pInputText
@@ -75,6 +76,7 @@
             aria-describedby="username2-help"
             placeholder="ID" 
             #ID ="ngModel"
+            [disabled] = "true"
             [ngModel]="category.ID"  />
 
           <input type="text"
@@ -97,7 +99,7 @@
              [ngModel]="category.CategoryType"/>
              <br><br>
   <ng-template pTemplate="footer">
-      <p-button icon="pi pi-check" (click)="updateData(category)" label="Yes" styleClass="p-button-text"></p-button>
+      <p-button icon="pi pi-check" (click)="updateData()" label="Yes" styleClass="p-button-text"></p-button>
       <p-button icon="pi pi-times" (click)="displayModal=false" label="No"></p-button>
   </ng-template>
 </p-dialog>

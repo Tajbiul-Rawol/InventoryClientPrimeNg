@@ -42,4 +42,9 @@ export class ResourceService {
     let url = this.baseUrl+"Product/update";
     return this.http.put(url,product);
  }
+
+updateCategoryData(category: Category){
+   let url = this.baseUrl + "Category/put";
+   return this.http.put(url,category);
+}
 }
