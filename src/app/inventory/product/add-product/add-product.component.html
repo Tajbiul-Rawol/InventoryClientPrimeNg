@@ -47,10 +47,8 @@
       <p-button type="button"  (click)="loadProductData()" label="Refresh" ></p-button>
     
       <div class="card">
-        <h5>Events</h5>
-        <p>onRowSelect and onRowUnselect are available as selection events.</p>
         <p-table [value]="products" selectionMode="single" [(selection)]="selectedProduct" dataKey="ID" responsiveLayout="scroll"
-            (onRowSelect)="onRowSelect($event)" (onRowUnselect)="onRowUnselect($event)"  scrollHeight="300px">
+            (onRowSelect)="onRowSelect($event)" (onRowUnselect)="onRowUnselect($event)" [scrollable]="true" scrollHeight="300px">
             <ng-template pTemplate="header">
                 <tr>
                     <th>ID</th>
