@@ -21,6 +21,8 @@ import { AddCategoryComponent } from "./inventory/category/add-category/add-cate
 import {TableModule} from 'primeng/table';
 import { ToastModule } from "primeng/toast";
 import {DialogModule} from 'primeng/dialog';
+import {ProgressBarModule} from 'primeng/progressbar';
+import {ProgressSpinnerModule} from 'primeng/progressspinner';
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,7 +48,9 @@ import {DialogModule} from 'primeng/dialog';
     MessageModule,
     TableModule,
     ToastModule,
-    DialogModule
+    DialogModule,
+    ProgressBarModule,
+    ProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
