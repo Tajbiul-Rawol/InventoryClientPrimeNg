@@ -64,13 +64,19 @@ export class AddProductComponent implements OnInit {
        }
        else{
              this.updateProduct(this.product);
+             this.click = false;
+             this.clearField();
        }
       this.displayModal = false;
     }
   }
 
  toggleClick(){
-     this.click = true;
+     if (this.click) {
+         this.click = false;
+     }else{
+       this.click = true;
+     }
   }
 
   saveProductData(){

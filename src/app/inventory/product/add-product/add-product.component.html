@@ -1,8 +1,9 @@
 <p-toast></p-toast>
-<div class="row" [style]="{ display: 'inline-flex' }">
+<div class="row" [style]="{ display: 'inline-flex'}">
   <div style="width: 40%; left: 20%; padding: 20px">
-    <div class="card">
-      <h5>Add Product</h5>
+    <br><br>
+    <div class="card borderDesign" [style]="{border: '1px solid #ccc!important', padding:'10px'}">
+      <h5 class="headerText">Add Product</h5>
       <div class="ui-fluid">
         <div class="p-field" style="margin-left: 10%">
           <input
@@ -24,14 +25,14 @@
           />
           <div>
             <div *ngIf="product.ProductName === ''">
-              <small id="username2-help" class="p-invalid"
+              <small id="username2-help" class="invalid"
                 >product name is not available.</small
               >
             </div>
           </div>
         </div>
         <br />
-        <div class="p-field" style="margin-left: 10%">
+        <div class="p-field" [style]="{'margin-left': '10%'}">
           <input
             type="text"
             pInputText
@@ -45,16 +46,17 @@
             pInputText
             [(ngModel)]="product.ProductType"
             placeholder="type"
+
           />
           <div class="row">
             <div class="col-sm-6">
               <div *ngIf="click && !product.Price">
-                <small class="p-invalid">product name is not available.</small>
+                <small class="invalid">product name is not available.</small>
               </div>
             </div>
             <div class="col-sm-6" [ngStyle]="{ padding: '0px' }">
-              <div *ngIf="product.ProductType === ''">
-                <small class="p-invalid">product Type is not available.</small>
+              <div *ngIf="click && product.ProductType === ''">
+                <small class="invalid">product Type is not available.</small>
               </div>
             </div>
           </div>
@@ -79,9 +81,15 @@
     <p-button
       type="button"
       (click)="loadProductData()"
-      label="Refresh"
+      label="Get Products"
     ></p-button>
-
+    &nbsp;
+    <p-button
+    type="button"
+    (click)="clearField()"
+    label="Refresh"
+  ></p-button>
+  <br><br>
     <div class="card">
       <p-table
         [value]="products"
@@ -130,7 +138,7 @@
 >
   <input
     type="text"
-    [ngStyle]="{ 'margin-right': '10px' }"
+    [ngStyle]="{ 'margin-right': '10px', 'margin-top':'3px' }"
     name="ID"
     id="ID"
     pInputText
@@ -143,7 +151,7 @@
 
   <input
     type="text"
-    [ngStyle]="{ 'margin-right': '10px' }"
+    [ngStyle]="{ 'margin-right': '10px', 'margin-top':'3px'  }"
     pInputText
     id="productName"
     #productName="ngModel"
@@ -154,7 +162,7 @@
   />
   <input
     type="text"
-    [ngStyle]="{ 'margin-right': '10px' }"
+    [ngStyle]="{ 'margin-right': '10px', 'margin-top':'3px'  }"
     pInputText
     id="price"
     style="margin-right: 20px"
