@@ -1,1 +1,32 @@
-<p>login works!</p>
+<div class="dimension-center">
+    <div class="card borderDesign" [style]="{border: '1px solid #ccc!important', padding:'10px'}">
+        <h5 class="headerText">login</h5>
+        <div class="ui-fluid">
+          <div class="p-field" style="margin-left: 10%">
+            <input
+              type="text"
+              [ngStyle]="{ 'margin-right': '10px' }"
+              pInputText
+              aria-describedby="username2-help"
+              placeholder="User Name"
+            />
+            <input
+              type="text"
+              [ngStyle]="{ 'margin-right': '10px' }"
+              pInputText
+              [ngClass]="{ disabled: 'selectedProduct !=null' }"
+              style="margin-right: 20px"
+              placeholder="Password"
+            />
+    
+          </div>
+          <br />
+
+          <br />
+
+          <div class="p-field" style="margin-left: 45%">
+            <p-button label="login" ></p-button>
+          </div>
+        </div>
+      </div>
+</div>

@@ -23,13 +23,16 @@ import { ToastModule } from "primeng/toast";
 import {DialogModule} from 'primeng/dialog';
 import {ProgressBarModule} from 'primeng/progressbar';
 import {ProgressSpinnerModule} from 'primeng/progressspinner';
+import { AuthServiceService } from "./services/auth-service.service";
+import { LoginComponent } from './authentication/login/login.component';
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     SidebarComponent,
     AddProductComponent,
-    AddCategoryComponent
+    AddCategoryComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +55,7 @@ import {ProgressSpinnerModule} from 'primeng/progressspinner';
     ProgressBarModule,
     ProgressSpinnerModule
   ],
-  providers: [],
+  providers: [AuthServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
