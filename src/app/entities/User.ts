@@ -1,7 +1,9 @@
 export class User{
     ID: number;
     Name: string;
-    Type: string;
-    Age: number;
     Dob: Date;
+    BloodGroup: string;
+    Religion: string;
+    UserLoginID: number;
+    Gender: string;
 }
