@@ -7,6 +7,7 @@
               type="text"
               [ngStyle]="{ 'margin-right': '10px' }"
               pInputText
+              [(ngModel)]="userLoginData.UserName"
               aria-describedby="username2-help"
               placeholder="User Name"
             />
@@ -14,18 +15,18 @@
               type="text"
               [ngStyle]="{ 'margin-right': '10px' }"
               pInputText
+              [(ngModel)]="this.userLoginData.UserPassword"
               [ngClass]="{ disabled: 'selectedProduct !=null' }"
               style="margin-right: 20px"
               placeholder="Password"
             />
-    
           </div>
           <br />
 
           <br />
 
           <div class="p-field" style="margin-left: 45%">
-            <p-button label="login" ></p-button>
+            <p-button label="login" (click)="submit()"></p-button>
           </div>
         </div>
       </div>
