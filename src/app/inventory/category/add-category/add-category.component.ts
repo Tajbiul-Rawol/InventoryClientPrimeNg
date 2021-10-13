@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Message,MessageService} from 'primeng/api';
-import {ResourceService} from '../../../services/resource-services.service';
+import {ResourceService} from '../../../services/resourceService/resource-services.service';
 import { Category } from '../../../entities/Category'; 
 import { PrimeNGConfig } from 'primeng/api';
 

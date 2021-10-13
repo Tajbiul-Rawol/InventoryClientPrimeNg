@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserLogin } from "../../entities/UserLogin";
-import { AuthServiceService } from "../../services/auth-service.service";
+import { AuthServiceService } from "../../services/AuthService/auth-service.service";
 import { PrimeNGConfig } from 'primeng/api';
 import {Message,MessageService} from 'primeng/api';
 @Component({

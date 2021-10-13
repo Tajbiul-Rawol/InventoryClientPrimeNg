@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Product } from '../../../entities/Product'; 
 import { PrimeNGConfig } from 'primeng/api';
 import {Message,MessageService} from 'primeng/api';
-import {ResourceService} from '../../../services/resource-services.service';
+import {ResourceService} from '../../../services/resourceService/resource-services.service';
 
 @Component({
   selector: 'app-add-product',
