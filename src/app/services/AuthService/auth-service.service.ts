@@ -5,9 +5,10 @@ import { HttpClient,HttpHeaders,HttpParams } from "@angular/common/http";
   providedIn: 'root'
 })
 export class AuthService {
-
+ 
   constructor(private http: HttpClient) { }
   loggedInUser: string;
+
   login(data): any{
     let response = this.http.post('http://localhost:21435/token',
     "userName=" + encodeURIComponent(data.userName) +
@@ -17,10 +18,10 @@ export class AuthService {
     return response;
   }
 
-  doLoginUser(userName:string, token: string, loggedIn: boolean){
+  doLoginUser(userName:string, token: string){
      this.loggedInUser = userName;
      this.storeToken(token);
-     this.isLoggedIn(loggedIn);
+     this.isLoggedIn();
   }
 
   storeToken(token: string){
@@ -28,10 +29,10 @@ export class AuthService {
      localStorage.setItem(key, token);
   }
 
-  isLoggedIn(loggedIn: boolean): Boolean{
-     if (loggedIn) {
-        return loggedIn;
+  isLoggedIn(): Boolean{
+     if (this.loggedInUser) {
+        return true;
      }
-     return !loggedIn;
+     return false;
   }
 }

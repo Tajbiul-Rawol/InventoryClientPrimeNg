@@ -24,10 +24,9 @@ export class LoginComponent implements OnInit {
        }
        this.authService.login(userData).subscribe(
          response=>{
-           let loggedIn = true;
            let accessToken = response.body.access_token;
            let expiresIn = response.body.expires_in;
-           this.authService.doLoginUser(userData.userName,accessToken, loggedIn);
+           this.authService.doLoginUser(userData.userName,accessToken);
          },
          error=>{
            console.log(error);

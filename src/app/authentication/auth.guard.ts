@@ -7,10 +7,10 @@ import { AuthService } from "../services/AuthService/auth-service.service";
 export class AuthGuard  {
     constructor(private authService: AuthService, private router: Router) {}
 
-    // canActivate(){
-    //     if (this.authService.isLoggedIn()) {
-    //         this.router.navigate(['/app-add-product']);
-    //     }
-    //     return !this.authService.isLoggedIn();
-    // }
+    canActivate(){
+        if (this.authService.isLoggedIn()) {
+            this.router.navigate(['/app-add-product']);
+        }
+        return !this.authService.isLoggedIn();
+    }
 }
