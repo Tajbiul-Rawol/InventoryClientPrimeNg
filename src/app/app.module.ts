@@ -23,7 +23,7 @@ import { ToastModule } from "primeng/toast";
 import {DialogModule} from 'primeng/dialog';
 import {ProgressBarModule} from 'primeng/progressbar';
 import {ProgressSpinnerModule} from 'primeng/progressspinner';
-import { AuthServiceService } from "./services//AuthService/auth-service.service";
+import { AuthService } from "./services/AuthService/auth-service.service";
 import { LoginComponent } from './authentication/login/login.component';
 @NgModule({
   declarations: [
@@ -55,7 +55,7 @@ import { LoginComponent } from './authentication/login/login.component';
     ProgressBarModule,
     ProgressSpinnerModule
   ],
-  providers: [AuthServiceService],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

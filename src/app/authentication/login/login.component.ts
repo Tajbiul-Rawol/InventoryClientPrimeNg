@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserLogin } from "../../entities/UserLogin";
-import { AuthServiceService } from "../../services/AuthService/auth-service.service";
+import { AuthService } from "../../services//AuthService/auth-service.service";
 import { PrimeNGConfig } from 'primeng/api';
 import {Message,MessageService} from 'primeng/api';
 @Component({
@@ -10,7 +10,7 @@ import {Message,MessageService} from 'primeng/api';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(public authService:AuthServiceService, public primengConfig: PrimeNGConfig) { }
+  constructor(public authService:AuthService, public primengConfig: PrimeNGConfig) { }
 
   userLoginData = new UserLogin();
   ngOnInit(): void {
@@ -18,13 +18,16 @@ export class LoginComponent implements OnInit {
  
   submit(){
     if (this.userLoginData.UserName != null || this.userLoginData.UserPassword != null) {
-       let postData = {
+       let userData = {
            userName: this.userLoginData.UserName,
            password: this.userLoginData.UserPassword
        }
-       this.authService.postData(postData).subscribe(
+       this.authService.login(userData).subscribe(
          response=>{
-                console.log(response.body.access_token);
+           let loggedIn = true;
+           let accessToken = response.body.access_token;
+           let expiresIn = response.body.expires_in;
+           this.authService.doLoginUser(userData.userName,accessToken, loggedIn);
          },
          error=>{
            console.log(error);
