@@ -3,6 +3,7 @@ import { UserLogin } from "../../entities/UserLogin";
 import { AuthService } from "../../services//AuthService/auth-service.service";
 import { PrimeNGConfig } from 'primeng/api';
 import {Message,MessageService} from 'primeng/api';
+import { AuthGuard } from "../auth.guard";
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -10,7 +11,7 @@ import {Message,MessageService} from 'primeng/api';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(public authService:AuthService, public primengConfig: PrimeNGConfig) { }
+  constructor(public authService:AuthService, public primengConfig: PrimeNGConfig, private authGuard: AuthGuard) { }
 
   userLoginData = new UserLogin();
   ngOnInit(): void {

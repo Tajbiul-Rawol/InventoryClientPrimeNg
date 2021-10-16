@@ -25,6 +25,7 @@ import {ProgressBarModule} from 'primeng/progressbar';
 import {ProgressSpinnerModule} from 'primeng/progressspinner';
 import { AuthService } from "./services/AuthService/auth-service.service";
 import { LoginComponent } from './authentication/login/login.component';
+import {PasswordModule} from 'primeng/password';
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,7 +54,8 @@ import { LoginComponent } from './authentication/login/login.component';
     ToastModule,
     DialogModule,
     ProgressBarModule,
-    ProgressSpinnerModule
+    ProgressSpinnerModule,
+    PasswordModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]
