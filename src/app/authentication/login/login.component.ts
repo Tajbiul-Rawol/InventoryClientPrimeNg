@@ -28,6 +28,7 @@ export class LoginComponent implements OnInit {
            let accessToken = response.body.access_token;
            let expiresIn = response.body.expires_in;
            this.authService.doLoginUser(userData.userName,accessToken);
+           this.authGuard.canActivate();
          },
          error=>{
            console.log(error);
