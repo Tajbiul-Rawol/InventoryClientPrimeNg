@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Category } from '../../entities/Category';
 import { Product } from '../../entities/Product';
 import { Store } from '../../entities/Store';
+import { apiUrl } from "../../env";
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ export class ResourceService {
 
   constructor(private http:HttpClient) { }
    
-  baseUrl = "http://localhost:21435/api/";
+  baseUrl = apiUrl;
   Token: string;
 
   getCategoryData(){

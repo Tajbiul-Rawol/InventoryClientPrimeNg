@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient,HttpHeaders,HttpParams } from "@angular/common/http";
-
+import { tokenUrl } from "../../env";
 @Injectable({
   providedIn: 'root'
 })
@@ -10,7 +10,7 @@ export class AuthService {
   loggedInUser: string;
 
   login(data): any{
-    let response = this.http.post('http://localhost:21435/token',
+    let response = this.http.post(tokenUrl,
     "userName=" + encodeURIComponent(data.userName) +
     "&password=" + encodeURIComponent(data.password) +
     "&grant_type=password",
