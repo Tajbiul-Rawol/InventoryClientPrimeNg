@@ -15,6 +15,18 @@ export class ResourceService {
   baseUrl = apiUrl;
   Token: string;
 
+  authorizeHeader(){
+   var options = {};
+   this.Token = localStorage.getItem('token');
+   if (this.Token) {
+      const header = new HttpHeaders().set('Authorization', `Bearer ${this.Token}`); 
+      options = {
+         headers: header,
+      }
+    }
+    return options;
+  }
+
   getCategoryData(){
      let url = this.baseUrl+"Category/showCategories";
      return this.http.get(url);
@@ -22,20 +34,14 @@ export class ResourceService {
 
   getProductData(){
      let url = this.baseUrl+"Product/showProduct";
-     var options = {};
-     this.Token = localStorage.getItem('token');
-     if (this.Token) {
-        const header = new HttpHeaders().set('Authorization', `Bearer ${this.Token}`); 
-        options = {
-           headers: header,
-        }
-      }
-    return this.http.get(url, options);
+     const headers = this.authorizeHeader();
+     return this.http.get(url, headers);
  }
 
  postProductData(product: Product){
     let url = this.baseUrl+"Product/post";
-    return this.http.post(url,product);
+    const headers = this.authorizeHeader();
+    return this.http.post(url,product,headers);
  }
 
  postCategoryData(category: Category){
@@ -50,7 +56,8 @@ export class ResourceService {
 
  updateProductData(product: Product){
     let url = this.baseUrl+"Product/update";
-    return this.http.put(url,product);
+    const headers = this.authorizeHeader();
+    return this.http.put(url,product,headers);
  }
 
 updateCategoryData(category: Category){
