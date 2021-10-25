@@ -29,6 +29,7 @@ export class ResourceService {
 
   getCategoryData(){
      let url = this.baseUrl+"Category/showCategories";
+     const headers = this.authorizeHeader();
      return this.http.get(url);
   }
 
@@ -46,11 +47,13 @@ export class ResourceService {
 
  postCategoryData(category: Category){
    let url = this.baseUrl+"Category/post";
+   const headers = this.authorizeHeader();
    return this.http.post(url,category);
 }
 
  getStoreData(){
   let url = this.baseUrl+"Store/getStore";
+  const headers = this.authorizeHeader();
   return this.http.get(url);
 }
 
@@ -62,8 +65,9 @@ export class ResourceService {
 
 updateCategoryData(category: Category){
    let url = this.baseUrl + "Category/put";
+   const headers = this.authorizeHeader();
    return this.http.put(url,category);
-}
+ }
 }
 
 
