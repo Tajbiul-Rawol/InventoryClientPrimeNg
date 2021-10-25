@@ -27,7 +27,7 @@ export class ResourceService {
      if (this.Token) {
         const header = new HttpHeaders().set('Authorization', `Bearer ${this.Token}`); 
         options = {
-           Headers: header,
+           headers: header,
         }
       }
     return this.http.get(url, options);
