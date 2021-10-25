@@ -24,7 +24,6 @@ export class AddProductComponent implements OnInit {
   constructor(private messageService: MessageService, public ApiService: ResourceService, public primengConfig: PrimeNGConfig) { }
   
   ngOnInit(): void {
-    this.displayToken = localStorage.getItem('token');
     this.loadProductData();
   }
 
