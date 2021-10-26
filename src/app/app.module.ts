@@ -26,6 +26,7 @@ import {ProgressSpinnerModule} from 'primeng/progressspinner';
 import { AuthService } from "./services/AuthService/auth-service.service";
 import { LoginComponent } from './authentication/login/login.component';
 import {PasswordModule} from 'primeng/password';
+import { DashboardComponent } from './layout/dashboard/dashboard.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +34,8 @@ import {PasswordModule} from 'primeng/password';
     SidebarComponent,
     AddProductComponent,
     AddCategoryComponent,
-    LoginComponent
+    LoginComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,

@@ -9,7 +9,7 @@ export class AuthGuard  {
 
     canActivate(){
         if (this.authService.isLoggedIn()) {
-            this.router.navigate(['/app-add-product']);
+            this.router.navigate(['/app-dashboard']);
         }
         return !this.authService.isLoggedIn();
     }

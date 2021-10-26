@@ -16,19 +16,18 @@ export class SidebarComponent implements OnInit {
   ngOnInit(): void {
     this.items = [
       {
-          label: 'File',
+          label: 'Inventory',
           icon: 'pi pi-pw pi-file',
           items: [{
-                  label: 'New', 
+                  label: 'Product', 
                   icon: 'pi pi-fw pi-plus',
                   items: [
-                      {label: 'User', icon: 'pi pi-fw pi-user-plus'},
-                      {label: 'Filter', icon: 'pi pi-fw pi-filter'}
+                      {label: 'Add Product', icon: 'pi pi-fw pi-user-plus'},
+                      {label: 'Open', icon: 'pi pi-fw pi-external-link'},
+                      {separator: true},
+                      {label: 'Quit', icon: 'pi pi-fw pi-times'}
                   ]
               },
-              {label: 'Open', icon: 'pi pi-fw pi-external-link'},
-              {separator: true},
-              {label: 'Quit', icon: 'pi pi-fw pi-times'}
           ]
       },
       {

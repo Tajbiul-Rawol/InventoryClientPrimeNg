@@ -4,6 +4,7 @@ import { AuthGuard } from './authentication/auth.guard';
 import { LoginComponent } from './authentication/login/login.component';
 import { AddCategoryComponent } from './inventory/category/add-category/add-category.component';
 import { AddProductComponent } from './inventory/product/add-product/add-product.component';
+import { DashboardComponent } from "././layout/dashboard/dashboard.component";
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: '/login'},
@@ -11,6 +12,10 @@ const routes: Routes = [
     path: 'login',
     component: LoginComponent,
     canActivate: [AuthGuard]
+  },
+  {
+    path: 'app-dashboard',
+    component: DashboardComponent
   },
   {
     path: 'app-add-product',
