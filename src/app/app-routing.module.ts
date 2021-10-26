@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './authentication/auth.guard';
 import { LoginComponent } from './authentication/login/login.component';
+import { AddCategoryComponent } from './inventory/category/add-category/add-category.component';
 import { AddProductComponent } from './inventory/product/add-product/add-product.component';
 
 const routes: Routes = [
@@ -14,6 +15,10 @@ const routes: Routes = [
   {
     path: 'app-add-product',
     component: AddProductComponent
+  },
+  {
+    path: 'app-add-category',
+    component: AddCategoryComponent
   }
   
  

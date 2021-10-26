@@ -30,7 +30,7 @@ export class ResourceService {
   getCategoryData(){
      let url = this.baseUrl+"Category/showCategories";
      const headers = this.authorizeHeader();
-     return this.http.get(url);
+     return this.http.get(url, headers);
   }
 
   getProductData(){
