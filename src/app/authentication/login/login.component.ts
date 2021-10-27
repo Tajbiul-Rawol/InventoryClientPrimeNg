@@ -15,6 +15,7 @@ export class LoginComponent implements OnInit {
 
   userLoginData = new UserLogin();
   ngOnInit(): void {
+  
   }
  
   submit(){
