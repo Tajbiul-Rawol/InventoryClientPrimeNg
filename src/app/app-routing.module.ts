@@ -5,6 +5,7 @@ import { LoginComponent } from './authentication/login/login.component';
 import { AddCategoryComponent } from './inventory/category/add-category/add-category.component';
 import { AddProductComponent } from './inventory/product/add-product/add-product.component';
 import { DashboardComponent } from "././layout/dashboard/dashboard.component";
+import { AddStoreComponent } from './inventory/store/add-store/add-store.component';
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: '/login'},
@@ -24,6 +25,10 @@ const routes: Routes = [
   {
     path: 'app-add-category',
     component: AddCategoryComponent
+  },
+  {
+    path: 'app-add-store',
+    component: AddStoreComponent
   }
   
  
