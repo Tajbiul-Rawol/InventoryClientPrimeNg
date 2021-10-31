@@ -11,11 +11,15 @@ import { AuthGuard } from "../auth.guard";
 })
 export class LoginComponent implements OnInit {
 
-  constructor(public authService:AuthService, public primengConfig: PrimeNGConfig, private authGuard: AuthGuard) { }
-
+  constructor(public authService:AuthService, public primengConfig: PrimeNGConfig, private authGuard: AuthGuard, public messageService: MessageService) { }
   userLoginData = new UserLogin();
+  
   ngOnInit(): void {
   
+  }
+
+  showViaService(message, type){
+    this.messageService.add({severity: type, detail: message});
   }
  
   submit(){
@@ -32,7 +36,10 @@ export class LoginComponent implements OnInit {
            this.authGuard.canActivate();
          },
          error=>{
-           console.log(error);
+          if (error) {
+            let type = "error";
+            this.showViaService(error,type);
+          }
          }
        );
 
